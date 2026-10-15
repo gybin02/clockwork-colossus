@@ -1,4 +1,7 @@
 import * as THREE from 'three';
+import { zn, Ct, jt, Mi, Hi, un, wt, _s, xa, _a } from '../core/math.js';
+import { jr, Pt } from './knight-rig.js';
+
 
 const R = THREE.Vector3;
 const ae = THREE.Vector2;
@@ -35,6 +38,30 @@ const Vs = THREE.TextureLoader;
 const Sn = THREE.MeshPhysicalMaterial;
 const $n = THREE.MeshStandardMaterial;
 
+const pn = THREE.Euler;
+const si = THREE.InstancedMesh;
+const ra = THREE.HemisphereLight;
+const vs = THREE.DirectionalLight;
+const Fi = THREE.PointLight;
+const Fo = THREE.Sprite;
+const Dr = THREE.SpriteMaterial;
+const Di = THREE.RingGeometry;
+const St = THREE.CylinderGeometry;
+const ms = THREE.ConeGeometry;
+const Bs = THREE.DodecahedronGeometry;
+const Qo = THREE.LatheGeometry;
+const Ii = THREE.Shape;
+const gs = THREE.Path;
+const ea = THREE.ShapeGeometry;
+const zr = THREE.CatmullRomCurve3;
+const Jr = THREE.PMREMGenerator;
+const No = THREE.FogExp2;
+const Kn = THREE.InstancedBufferAttribute;
+const la = THREE.InstancedBufferGeometry;
+const ns = THREE.OrthographicCamera;
+const Mt = THREE.ShaderMaterial;
+const ha = THREE.Clock;
+
 const qs = THREE.LinearFilter;
 const Jt = THREE.NearestFilter;
 const ri = THREE.LinearMipmapLinearFilter;
@@ -50,7 +77,14 @@ const Bn = '';
 const on = 'srgb-linear';
 const mt = { workingColorSpace: 'srgb-linear' };
 
-import { zn, Ct, jt, Mi, Hi, un } from '../core/math.js';
+const ARENA_RADIUS = 18;
+const Si = ARENA_RADIUS;
+
+const ol = 35044, Bi = 35048;
+const jh = "300 es", fi = 2e3, Ro = 2001;
+const Ys = 303;
+
+
 var Qr = Math.PI * 2;
 function Tn(s) {
   let e = jr();

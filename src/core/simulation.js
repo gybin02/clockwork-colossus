@@ -1,4 +1,10 @@
 import * as THREE from 'three';
+import { zn, Ct, jt, wt, Mi, Hi, un, Ip } from './math.js';
+import { jr, Pt } from '../entities/knight-rig.js';
+import { Ac, Ac as BossRig } from '../entities/boss-rig.js';
+import { Rc, Rc as KnightRig } from '../entities/knight-rig.js';
+import { Tn, vn, Dp, Ly, Op, Bp, zp, ss, Hp, kp, Cc, Vp, Up, ya, Pc, Gp, Wp, Xp, Yp } from '../entities/boss-attacks.js';
+
 
 const R = THREE.Vector3;
 const ae = THREE.Vector2;
@@ -35,6 +41,30 @@ const Vs = THREE.TextureLoader;
 const Sn = THREE.MeshPhysicalMaterial;
 const $n = THREE.MeshStandardMaterial;
 
+const pn = THREE.Euler;
+const si = THREE.InstancedMesh;
+const ra = THREE.HemisphereLight;
+const vs = THREE.DirectionalLight;
+const Fi = THREE.PointLight;
+const Fo = THREE.Sprite;
+const Dr = THREE.SpriteMaterial;
+const Di = THREE.RingGeometry;
+const St = THREE.CylinderGeometry;
+const ms = THREE.ConeGeometry;
+const Bs = THREE.DodecahedronGeometry;
+const Qo = THREE.LatheGeometry;
+const Ii = THREE.Shape;
+const gs = THREE.Path;
+const ea = THREE.ShapeGeometry;
+const zr = THREE.CatmullRomCurve3;
+const Jr = THREE.PMREMGenerator;
+const No = THREE.FogExp2;
+const Kn = THREE.InstancedBufferAttribute;
+const la = THREE.InstancedBufferGeometry;
+const ns = THREE.OrthographicCamera;
+const Mt = THREE.ShaderMaterial;
+const ha = THREE.Clock;
+
 const qs = THREE.LinearFilter;
 const Jt = THREE.NearestFilter;
 const ri = THREE.LinearMipmapLinearFilter;
@@ -50,14 +80,15 @@ const Bn = '';
 const on = 'srgb-linear';
 const mt = { workingColorSpace: 'srgb-linear' };
 
-import { zn, Ct, jt } from './math.js';
-import { Ac as BossRig } from '../entities/boss-rig.js';
-import { Rc as KnightRig } from '../entities/knight-rig.js';
-import { Tn, vn, Dp, Ly, Op, Bp, zp, ss, Hp, kp, Cc, Vp, Up, ya, Pc, Gp, Wp, Xp, Yp } from '../entities/boss-attacks.js';
-const Ac = BossRig;
-const Rc = KnightRig;
+const ARENA_RADIUS = 18;
+const Si = ARENA_RADIUS;
 
-var Si = 18,
+const ol = 35044, Bi = 35048;
+const jh = "300 es", fi = 2e3, Ro = 2001;
+const Ys = 303;
+
+
+var
   $e = R,
   Ic = Math.PI * 2,
   Eu = 1 / 120,
@@ -795,7 +826,7 @@ var Si = 18,
           let l = Math.min(1, c / 0.5) * 4.6,
             h = this.pos.x + o.x * l,
             d = this.pos.z + o.z * l;
-          (Math.hypot(h, d) > Si - 1.6 && (a = Math.min(a, -3)),
+          (Math.hypot(h, d) >- 1.6 && (a = Math.min(a, -3)),
             Math.hypot(h, d) < 2.6 && (a = Math.min(a, -1)));
           for (let u of t.cogs) {
             if (!u.alive || u.state === "fall") continue;
@@ -1238,8 +1269,8 @@ var Si = 18,
         }
       }
       let c = Math.hypot(this.pos.x, this.pos.z);
-      if (c > Si - 1.2) {
-        let l = (Si - 1.2) / c;
+      if (c >- 1.2) {
+        let l = (- 1.2) / c;
         ((this.pos.x *= l), (this.pos.z *= l));
       }
       (this.fade < 1 &&
@@ -1559,7 +1590,7 @@ var Si = 18,
                       }))
                     : (n.vy = 0)),
                 (n.pos.y = n.radius + n.y),
-                Math.hypot(n.pos.x, n.pos.z) > Si + 0.4 &&
+                Math.hypot(n.pos.x, n.pos.z) >+ 0.4 &&
                   ((n.state = "fall"),
                   n.vel.set(n.rollDir.x * n.speed, 0, n.rollDir.z * n.speed),
                   this.emit({ type: "cogFall", cog: n, pos: n.pos.clone() })),
@@ -1613,4 +1644,4 @@ var Si = 18,
     }
   };
 
-export { Si, Dc, Dc as Simulation };
+export { Dc, Dc as Simulation };

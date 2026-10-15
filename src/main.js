@@ -1,4 +1,19 @@
 import * as THREE from 'three';
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
+const Tc = RGBELoader;
+import { Yp } from './entities/boss-attacks.js';
+import { Dc } from './core/simulation.js';
+import { Lc } from './core/camera.js';
+import { qp } from './core/input.js';
+import { Ot, Pn, tr } from './graphics/shaders.js';
+import { jp } from './graphics/environment.js';
+import { Qp } from './graphics/boss-view.js';
+import { em } from './graphics/knight-view.js';
+import { nm } from './graphics/postprocessing.js';
+import { im } from './graphics/particles.js';
+import { sm } from './ui/hud.js';
+import { um, dm } from './graphics/models.js';
+
 
 const R = THREE.Vector3;
 const ae = THREE.Vector2;
@@ -35,6 +50,30 @@ const Vs = THREE.TextureLoader;
 const Sn = THREE.MeshPhysicalMaterial;
 const $n = THREE.MeshStandardMaterial;
 
+const pn = THREE.Euler;
+const si = THREE.InstancedMesh;
+const ra = THREE.HemisphereLight;
+const vs = THREE.DirectionalLight;
+const Fi = THREE.PointLight;
+const Fo = THREE.Sprite;
+const Dr = THREE.SpriteMaterial;
+const Di = THREE.RingGeometry;
+const St = THREE.CylinderGeometry;
+const ms = THREE.ConeGeometry;
+const Bs = THREE.DodecahedronGeometry;
+const Qo = THREE.LatheGeometry;
+const Ii = THREE.Shape;
+const gs = THREE.Path;
+const ea = THREE.ShapeGeometry;
+const zr = THREE.CatmullRomCurve3;
+const Jr = THREE.PMREMGenerator;
+const No = THREE.FogExp2;
+const Kn = THREE.InstancedBufferAttribute;
+const la = THREE.InstancedBufferGeometry;
+const ns = THREE.OrthographicCamera;
+const Mt = THREE.ShaderMaterial;
+const ha = THREE.Clock;
+
 const qs = THREE.LinearFilter;
 const Jt = THREE.NearestFilter;
 const ri = THREE.LinearMipmapLinearFilter;
@@ -50,20 +89,13 @@ const Bn = '';
 const on = 'srgb-linear';
 const mt = { workingColorSpace: 'srgb-linear' };
 
-import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
-const Tc = RGBELoader;
+const ARENA_RADIUS = 18;
+const Si = ARENA_RADIUS;
 
-import { Yp } from './entities/boss-attacks.js';
-import { Si, Dc } from './core/simulation.js';
-import { Lc } from './core/camera.js';
-import { qp } from './core/input.js';
-import { Ot, Pn, tr } from './graphics/shaders.js';
-import { jp } from './graphics/environment.js';
-import { Qp } from './graphics/boss-view.js';
-import { em } from './graphics/knight-view.js';
-import { nm } from './graphics/postprocessing.js';
-import { im, sm } from './graphics/particles.js';
-import { um, dm } from './graphics/models.js';
+const ol = 35044, Bi = 35048;
+const jh = "300 es", fi = 2e3, Ro = 2001;
+const Ys = 303;
+
 
 var ld = Yp(),
   gm = 1.32,
@@ -97,9 +129,10 @@ var rr = new Us(),
 xm.port1.onmessage = () => vm.shift()?.();
 var fd = () =>
   new Promise((s) => {
-    document.hidden
-      ? (vm.push(s), xm.port2.postMessage(0))
-      : requestAnimationFrame(() => s());
+    let done = false;
+    const finish = () => { if (!done) { done = true; s(); } };
+    requestAnimationFrame(finish);
+    setTimeout(finish, 30);
   });
 _c.onProgress = (s, e, t) => wa(0.06 + 0.7 * (e / t));
 async function n1() {
@@ -245,7 +278,12 @@ for (let s of Object.values(sr))
   s && s.isTexture && (Vi.initTexture(s), await fd());
 wa(0.93, "Winding the mainspring");
 await fd();
-await Vi.compileAsync(rr, en);
+try {
+  await Promise.race([
+    Vi.compileAsync(rr, en),
+    new Promise((_, reject) => setTimeout(() => reject(new Error("compile timeout")), 2500))
+  ]);
+} catch (e) {}
 lo.render();
 wa(1, "Fight");
 Sm = !0;

@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 
+
 const R = THREE.Vector3;
 const ae = THREE.Vector2;
 const qt = THREE.Quaternion;
@@ -35,6 +36,31 @@ const Vs = THREE.TextureLoader;
 const Sn = THREE.MeshPhysicalMaterial;
 const $n = THREE.MeshStandardMaterial;
 
+const pn = THREE.Euler;
+const si = THREE.InstancedMesh;
+const ra = THREE.HemisphereLight;
+const vs = THREE.DirectionalLight;
+const Fi = THREE.PointLight;
+const Fo = THREE.Sprite;
+const Dr = THREE.SpriteMaterial;
+const Di = THREE.RingGeometry;
+const St = THREE.CylinderGeometry;
+const ms = THREE.ConeGeometry;
+const Bs = THREE.DodecahedronGeometry;
+const Qo = THREE.LatheGeometry;
+const Ii = THREE.Shape;
+const gs = THREE.Path;
+const ea = THREE.ShapeGeometry;
+const zr = THREE.CatmullRomCurve3;
+const Jr = THREE.PMREMGenerator;
+const No = THREE.FogExp2;
+const Kn = THREE.InstancedBufferAttribute;
+const la = THREE.InstancedBufferGeometry;
+const ns = THREE.OrthographicCamera;
+const Mt = THREE.ShaderMaterial;
+const ha = THREE.Clock;
+const rt = THREE.ShaderChunk;
+
 const qs = THREE.LinearFilter;
 const Jt = THREE.NearestFilter;
 const ri = THREE.LinearMipmapLinearFilter;
@@ -49,6 +75,16 @@ const zt = 'srgb';
 const Bn = '';
 const on = 'srgb-linear';
 const mt = { workingColorSpace: 'srgb-linear' };
+
+const ARENA_RADIUS = 18;
+const Si = ARENA_RADIUS;
+
+const ol = 35044, Bi = 35048;
+const jh = "300 es", fi = 2e3, Ro = 2001;
+const Ys = 303;
+const Kh = THREE.TrianglesDrawMode;
+const ga = THREE.TriangleStripDrawMode;
+const Yr = THREE.TriangleFanDrawMode;
 
 var Ot = {
     uTime: { value: 0 },
@@ -791,5 +827,6 @@ function ba(s, e) {
 }
 
 export {
-  Ot, Zp, bt, er, Oy, Pn, bi, Au, Uc, Ei, Kp, Jp, Ru, Sa, oi, Ht, In, Dn, eo, to, $p, tr, Nc, zy, ba
+  Ot, Zp, bt, er, Oy, Pn, bi, Au, Uc, Ei, Kp, Jp, Ru, Sa, oi, Ht, In, Dn, eo, to, $p, tr, Nc, zy, ba,
+  By, Qt, ct, je
 };
