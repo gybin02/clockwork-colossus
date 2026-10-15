@@ -1,5 +1,8 @@
 # Clockwork Colossus (钟表巨神)
 
+> 🌐 **原站在线体验地址**：[https://clockwork-colossus.vercel.app/](https://clockwork-colossus.vercel.app/)  
+> 💡 **原项目作者/来源**：[@ammaar (Ammaar Reshi)](https://x.com/ammaar)
+
 基于 WebGL / Three.js 打造的高表现力 3D 动作 Boss 战网页游戏。玩家操控骑士挑战身形庞大的发条机械巨神（Clockwork Colossus），通过翻滚无敌帧、精准跳跃躲避冲击波和滚动齿轮，伺机反击并在巨神过热虚弱时打出爆发伤害。
 
 ---
