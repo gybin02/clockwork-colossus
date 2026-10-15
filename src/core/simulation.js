@@ -826,7 +826,7 @@ var
           let l = Math.min(1, c / 0.5) * 4.6,
             h = this.pos.x + o.x * l,
             d = this.pos.z + o.z * l;
-          (Math.hypot(h, d) >- 1.6 && (a = Math.min(a, -3)),
+          (Math.hypot(h, d) > Si - 1.6 && (a = Math.min(a, -3)),
             Math.hypot(h, d) < 2.6 && (a = Math.min(a, -1)));
           for (let u of t.cogs) {
             if (!u.alive || u.state === "fall") continue;
@@ -1269,8 +1269,8 @@ var
         }
       }
       let c = Math.hypot(this.pos.x, this.pos.z);
-      if (c >- 1.2) {
-        let l = (- 1.2) / c;
+      if (c > Si - 1.2) {
+        let l = (Si - 1.2) / c;
         ((this.pos.x *= l), (this.pos.z *= l));
       }
       (this.fade < 1 &&
@@ -1590,7 +1590,7 @@ var
                       }))
                     : (n.vy = 0)),
                 (n.pos.y = n.radius + n.y),
-                Math.hypot(n.pos.x, n.pos.z) >+ 0.4 &&
+                Math.hypot(n.pos.x, n.pos.z) > Si + 0.4 &&
                   ((n.state = "fall"),
                   n.vel.set(n.rollDir.x * n.speed, 0, n.rollDir.z * n.speed),
                   this.emit({ type: "cogFall", cog: n, pos: n.pos.clone() })),

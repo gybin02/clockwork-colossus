@@ -193,6 +193,7 @@ var i1 = jp(rr, Vi, sr),
   mm = sr.props ? dm(rr, sr.props, { R: Si }) : null,
   xn = new Dc({ seed: ld.seed, autoplay: ld.autoplay });
 qp(xn);
+window.__GAME = xn;
 for (let s of document.querySelectorAll('a[href*="discord.gg"]'))
   for (let e of ["pointerdown", "mousedown"])
     s.addEventListener(e, (t) => t.stopPropagation());
